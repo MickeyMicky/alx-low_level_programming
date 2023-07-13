@@ -1,4 +1,5 @@
 #include <stdio>
+#include <unistd.h>
 
 /**
  * main - print out the line without using puts or printf
