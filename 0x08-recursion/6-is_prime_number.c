@@ -5,7 +5,7 @@ int _prime(int n, int i);
 /**
  * is_prime_number - function that returns 1 if prime else 0
  * @n: number
- * Return: 1 or 0 
+ * Return: 1 or 0
  */
 
 int is_prime_number(int n)
