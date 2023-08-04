@@ -3,7 +3,7 @@
 /**
  * main - entry point
  * @argc: arg count
- * @argb: arg vector
+ * @argv: arg vector
  *
  * Return: 0
  */
