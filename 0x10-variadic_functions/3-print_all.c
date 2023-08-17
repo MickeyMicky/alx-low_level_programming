@@ -10,29 +10,29 @@ void print_all(const char * const format, ...)
 {
 	va_list args;
 	int i = 0;
-	char *s;
+	char *s, *sep = "";
 
 	va_start(args, format);
 
 	while (format && format[i])
 	{
 		if (format[i] == 'c')
-			printf("%c", va_arg(args, int));
+			printf("%s%c", sep, va_arg(args, int));
 		else if (format[i] == 'i')
-			printf("%d", va_arg(args, int));
+			printf("%s%d", sep, va_arg(args, int));
 		else if (format[i] == 'f')
-			printf("%f", va_arg(args, double));
+			printf("%s%f", sep, va_arg(args, double));
 		else if (format[i] == 's')
 		{
 			s = va_arg(args, char *);
 			if (s != NULL)
-				printf("%s", s);
+				printf("%s%s", sep, s);
 			else
 				printf("(nil)");
 		}
 
 		if (format[i + 1])
-			printf(", ");
+			sep = ", ";
 
 		i++;
 	}
