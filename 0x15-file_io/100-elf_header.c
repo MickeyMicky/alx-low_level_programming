@@ -4,13 +4,30 @@
 #include <elf.h>
 #include <stdio.h>
 
-
-void error_exit(int exit_code, const char *error_message)
+/**
+ * error_exit - Function to print an error message to STDERR
+ * and exit with the given exit code
+ * @code: the exit code to be given
+ * @exit_msg: exit message
+ * Description: If the file is not an ELF File or
+ * the function fails - exit code 98.
+ */
+void error_exit(int code, const char *exit_msg)
 {
-	fprintf(stderr, "%s", error_message);
-	exit(exit_code);
+	fprintf(stderr, "%s", exit_msg);
+	exit(code);
 }
 
+/**
+ * main - program that displays the information contained in
+ * the ELF header at the start of an ELF file
+ * @argc: number of arguments
+ * @argv: an array of pointers
+ *
+ * Return: 0 (success)
+ * Description: If the file is not an ELF File or
+ * the function fails - exit code 98.
+ */
 int main(int argc, char *argv[])
 {
 	int fd, i;
@@ -45,22 +62,9 @@ int main(int argc, char *argv[])
 	printf("Data: %s\n", header.e_ident[EI_DATA] == ELFDATA2LSB ?
 			"2's complement, little endian" : "2's complement, big endian");
 	printf("Version: %d\n", header.e_ident[EI_VERSION]);
-	printf("OS/ABI: %s\n", header.e_ident[EI_OSABI] == ELFOSABI_SYSV ? "UNIX - System V" : "Other");
+	printf("OS/ABI: %s\n", header.e_ident[EI_OSABI] == ELFOSABI_SYSV ?
+			"UNIX - System V" : "Other");
 	printf("ABI Version: %d\n", header.e_ident[EI_ABIVERSION]);
-
-	printf("Type: ");
-	switch (header.e_type)
-	{
-		case ET_NONE: printf("NONE"); break;
-		case ET_REL: printf("REL"); break;
-		case ET_EXEC: printf("EXEC"); break;
-		case ET_DYN: printf("DYN"); break;
-		case ET_CORE: printf("CORE"); break;
-		default: printf("UNKNOWN"); break;
-	}
-       	printf("\n");
-
-	printf("Entry point address: 0x%lx\n", (unsigned long)header.e_entry);
 
 	close(fd);
 	return (0);
