@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdlib.h>
 
-dlistint_t *create_node(const int n);
+dlistint_t *Create_Node(const int n);
 
 /**
  * add_dnodeint - Function that adds a node to the head
@@ -16,7 +16,7 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	dlistint_t *n_node = NULL;
 	dlistint_t *temp = NULL;
 
-	n_node = create_node(n);
+	n_node = Create_Node(n);
 	if (!n_node)
 		return (NULL);
 
@@ -38,12 +38,12 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 }
 
 /**
- * create_node - function that creates a new DLL node with data
+ * Create_Node - function that creates a new DLL node with data
  * @n: data to add to node
  *
  * Return: pointer to new node
  */
-dlistint_t *create_node(const int n)
+dlistint_t *Create_Node(const int n)
 {
 	dlistint_t *new_node = NULL;
 
